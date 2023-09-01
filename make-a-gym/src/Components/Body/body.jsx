@@ -19,7 +19,6 @@ export default function Body() {
 
     
   return (
-
     <body>
         <h1 class="MaPecho">Maquinas de Pecho, Espalda y Piernas</h1>
 
