@@ -20,9 +20,10 @@ export default function Body() {
     
   return (
     <body>
+        <br /><br />
         <h1 class="MaPecho">Maquinas de Pecho, Espalda y Piernas</h1>
 
-
+        <br /><br /><br />
         <div class="Container-Items">
             <div class="item">
                 <figure>

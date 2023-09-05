@@ -2,7 +2,7 @@ import './login.css';
 
 export default function Login() {
     return (
-        <div>
+        <div className='fondo'>
             <main>
                 <div className="contenedor__todo">
                     <div className="caja__trasera">

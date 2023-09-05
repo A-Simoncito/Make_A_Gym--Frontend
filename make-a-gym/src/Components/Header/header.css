@@ -15,7 +15,7 @@ header{
 
 .TittleP{
     text-align: center;
-    width: 1350px;
+    width: 1900px;
 }
 
 .container-cart-products{
@@ -123,9 +123,9 @@ header{
 }
 
 .login-icon{
-    position: relative;
+    position: absolute;
     top: 5px;
-    right: 1180px;
+    left: 0px;
     transform: translate(1, 1);
 }
 

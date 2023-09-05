@@ -6,13 +6,18 @@
     font-family: 'Roboto', sans-serif;
 }
 
-bodyLogin{
+.fondo{
     background-image: url(../../multimedia/bg4.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+
 }
+
+
+
+
 
 main{
     width: 100%;
