@@ -1,4 +1,6 @@
 import './login.css';
+import {Link} from 'react-router-dom'
+
 
 export default function Login() {
     return (
@@ -14,7 +16,10 @@ export default function Login() {
                         <div className="caja__trasera-register">
                             <h3>¿Aún no tienes una cuenta?</h3>
                             <p>Regístrate para que puedas iniciar sesión</p>
-                            <button id="btn__registrarse">Registrarse</button>
+                            <Link to= "/Register">
+                                <button id="btn__registrarse">Registrarse</button>
+                            </Link>
+                          
                         </div>
                     </div>
 
