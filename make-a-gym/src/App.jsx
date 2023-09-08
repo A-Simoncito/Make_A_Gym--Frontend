@@ -1,16 +1,14 @@
 import './App.css';
 import Header from './Components/Header/header';
 import Body from './Components/Body/body'
-import Login from './Components/Login/login';
+import Login from './Components/Login/login.jsx';
+import Register from './Components/Register/register.jsx';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <div className='App'>
-
-      {/* <Header></Header>
-      
-      <Login></Login> */}
 
       <BrowserRouter>
         <Routes>
@@ -29,18 +27,18 @@ function App() {
             path='/Login'
             element={
               <>
+                <Header/>
                 <Login/>
               </>
             }
           />
 
-
-
           <Route 
-            path='/Login'
+            path='/Register'
             element={
               <>
-                <Login/>
+                <Header/>
+                <Register/>
               </>
             }
           />
