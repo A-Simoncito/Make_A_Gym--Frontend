@@ -1,0 +1,64 @@
+[
+   {
+        "id": 1,
+        "name":"Press de Banca stronger",
+        "price": "$440"
+
+    },
+
+    {
+        "id": 2,
+        "name":"Press de Banca",
+        "price": "$180"
+
+    },
+
+    {
+        "id": 3,
+        "name":"Press de Banca inclinado",
+        "price": "$320"
+
+    },
+
+    {
+        "id": 4,
+        "name":"Multifuncion Espalda",
+        "price": "$640"
+
+    },
+
+    {
+        "id": 5,
+        "name":"Dorsalera",
+        "price": "$315"
+
+    },
+
+    {
+        "id": 6,
+        "name":"Espalda Inferior-Hombros",
+        "price": "$445"
+
+    },
+
+    {
+        "id": 7,
+        "name":"Prensa 45°",
+        "price": "$660"
+
+    },
+
+    {
+        "id": 8,
+        "name":"Sillon Cuadriceps",
+        "price": "$120"
+
+    },
+
+    {
+        "id": 9,
+        "name":"Camilla inclinable",
+        "price": "$200"
+
+    }
+]

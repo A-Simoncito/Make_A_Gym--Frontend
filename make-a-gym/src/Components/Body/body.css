@@ -24,6 +24,7 @@ body{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    text-align: center;
 
 }
 
@@ -77,7 +78,7 @@ body{
 }
 
 img{
-    max-width: 62%;
+    max-width: 71%;
 }
 
 
