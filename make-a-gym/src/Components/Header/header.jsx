@@ -6,8 +6,9 @@ export default function Header() {
   return (
     <header>
 
-  
+      
       <h1 class="TittleP">Make a Gym</h1>
+     
 
 
       <div class="login-icon">
