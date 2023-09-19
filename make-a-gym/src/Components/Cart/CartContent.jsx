@@ -9,7 +9,10 @@ export class CartContent extends Component {
                 <h1 className="nombrecarrito">Contenido del carrito</h1>
                 <br />
                 <div class="Container-Items">
-                    {buildTotalMachinesCards()}
+                    {Maquina.maquinasCarrito.map(e => buildMachineCard(e, () => {
+                        Maquina.removeMaquinaFromCart(e)
+                        this.setState({})
+                    }))}
                 </div>
                 <script src="index.js">
                 </script>
@@ -18,14 +21,8 @@ export class CartContent extends Component {
     }
 }
 
-const buildTotalMachinesCards = () => {
-    return (
-        Maquina.maquinasCarrito.map(maquina => buildMachineCard(maquina))
-    )
-}
+const buildMachineCard = (machine = new Maquina(), onDelete = () => {}) => {
 
-
-const buildMachineCard = (machine = new Maquina()) => {
     return (
         <div class="item">
             <figure>
@@ -34,10 +31,7 @@ const buildMachineCard = (machine = new Maquina()) => {
             <div class="info-producto">
                 <h2>{machine.nombre}</h2>
                 <p class="Precio">${machine.precio}</p>
-                <button class="btn-add-cart" onClick={() => {
-                    //TODO Eliminar del carrito
-                    console.table(Maquina.maquinasCarrito)
-                }}>Eliminar del Carrito</button>
+                <button class="btn-add-cart" onClick={onDelete}>Eliminar del Carrito</button>
             </div>
         </div>
     )
