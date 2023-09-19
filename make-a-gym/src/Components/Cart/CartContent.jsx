@@ -14,6 +14,7 @@ export class CartContent extends Component {
                         this.setState({})
                     }))}
                 </div>
+                <h1>Total: ${Maquina.calculateTotalPrice()}</h1>
                 <script src="index.js">
                 </script>
             </body>

@@ -20,7 +20,6 @@ export default function Register() {
         alert('Las contraseñas no coinciden');
         return;
       }
-  
       
       console.log(`Nombre de usuario: ${username}`);
       console.log(`Correo Electrónico: ${email}`);

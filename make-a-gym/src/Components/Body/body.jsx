@@ -50,7 +50,6 @@ const buildMachineCard = (machine = new Maquina()) => {
                 <p class="Precio">${machine.precio}</p>
                 <button class="btn-add-cart" onClick={() => {
                     Maquina.maquinasCarrito.push(machine)
-                    console.table(Maquina.maquinasCarrito)
                 }}>Añadir al Carrito</button>
             </div>
         </div>
