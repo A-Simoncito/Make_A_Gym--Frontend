@@ -20,7 +20,7 @@ export default function Header() {
     
       <div className = 'nav-container'>
       <Link to= "/Cart">
-        <h2 className= 'seeCarrito'>🛒</h2>
+        <h1 className= 'seeCarrito'>🛒</h1>
       </Link>
       </div>
 

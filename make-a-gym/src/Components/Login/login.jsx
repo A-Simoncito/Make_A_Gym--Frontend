@@ -1,8 +1,31 @@
 import './login.css';
+import React, { useState } from "react";
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 
 export default function Login() {
+  const [email, nombre]=useState("")
+  const [password, contraseña] =useState("")
+  const login = async (e) =>{
+        e.preventDefault()
+        try {
+            await axios.post("http://localhost:8080/login",{email,password})
+            alert("inicio de sesion exitoso")
+        
+        
+        } catch (error) {
+          alert("no se pudo iniciar sesion")
+        
+
+        
+        }
+  }
+
+
+
+
+
     return (
         <div className='fondo'>
             <main>
@@ -26,18 +49,9 @@ export default function Login() {
                     <div className="contenedor__login-register">
                         <form action="" className="formulario__login">
                             <h2>Iniciar Sesión</h2>
-                            <input type="text" placeholder="Correo Electrónico" />
-                            <input type="password" placeholder="Contraseña" />
-                            <button>Entrar</button>
-                        </form>
-
-                        <form action="" className="formulario__register">
-                            <h2>Registrarse</h2>
-                            <input type="text" placeholder="Nombre completo" />
-                            <input type="text" placeholder="Correo Electrónico" />
-                            <input type="text" placeholder="Usuario" />
-                            <input type="password" placeholder="Contraseña" />
-                            <button>Registrarse</button>
+                            <input type="text" placeholder="Correo Electrónico" value ={email} onChange={(e) => nombre (e.target.value)} />
+                            <input type="password" placeholder="Contraseña" value ={password} onChange={(e) => contraseña (e.target.value)} />
+                            <button onClick ={login}>Entrar</button>
                         </form>
                     </div>
                 </div>
