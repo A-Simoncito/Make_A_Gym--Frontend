@@ -33,7 +33,12 @@ main{
     max-width: 800px;
     margin: auto;
     position: relative;
+    margin-top: 20px; 
 }
+
+.footer {
+    margin-top: auto;
+  }
 
 .caja__trasera{
     width: 100%;

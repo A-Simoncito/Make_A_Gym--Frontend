@@ -7,7 +7,9 @@ export default function Header() {
     <header>
 
       
-      <h1 class="TittleP">Make a Gym</h1>
+      <h1 className="TittleP">
+        <Link to ="/">Make a Gym</Link>
+      </h1>
      
 
 

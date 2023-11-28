@@ -32,6 +32,7 @@ function App() {
                 <Header/>
                 <Login/>
                 
+                
               </>
             }
           />
@@ -42,6 +43,7 @@ function App() {
               <>
                 <Header/>
                 <Register/>
+                <Footer></Footer>
                 
               </>
             }
