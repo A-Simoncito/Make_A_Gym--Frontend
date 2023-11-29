@@ -5,26 +5,33 @@ import axios from 'axios'
 import './body.css';
 import CartContent from "../Cart/CartContent"
 
+
 export default function Body() {
-    const [data1, setData] = useState([]);
-    const [maquinasCarrito, setMaquinasCarrito] = useState([]);
+  const [data1, setData] = useState([]);
+  const [maquinasCarrito, setMaquinasCarrito] = useState([]);
   
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get('http://localhost:8080/products');
-          setData(response.data);
-        } catch (error) {
-          console.error('Error interno del servidor:', error);
-        }
-      };
-  
-      fetchData();
-    }, []);
-  
-    const handleAddToCart = (product) => {
-      setMaquinasCarrito([...maquinasCarrito, new Maquina(product.id, product.nombre, product.precio, product.imageurl)]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8080/products');
+        setData(response.data);
+      } catch (error) {
+        console.error('Error interno del servidor:', error);
+      }
     };
+
+    fetchData();
+  }, []);
+
+  const handleAddToCart = (product) => {
+    
+    const maquina = new Maquina(product.id, product.nombre, product.precio, product.imageurl);
+    maquina.addMaquinaToCart();
+    
+    
+    setMaquinasCarrito([...maquinasCarrito, maquina]);
+  };
   
     return (
       <body>
@@ -44,10 +51,12 @@ export default function Body() {
                   <p className="Precio">${product.price}</p>
                   <button className="btn-add-cart" onClick={() => handleAddToCart(product)}>
                     Añadir al Carrito
+                    
                   </button>
                 </div>
               </div>
             ))
+            
           ) : (
             <p>No hay productos disponibles.</p>
           )}
@@ -57,3 +66,5 @@ export default function Body() {
       </body>
     );
   }
+
+  

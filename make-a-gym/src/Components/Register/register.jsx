@@ -58,6 +58,8 @@ export default function Register() {
             <button type="submit" onClick = {registro} >Registrarse</button>
         </form>
         </div>
+
+      
     );
 }
 

@@ -1,33 +1,36 @@
 
-
 export class Maquina {
-
-    nombre
-    precio
-    img
-    static maquinasCarrito = []
-
-    static calculateTotalPrice(){
-        let contar = 0
-        this.maquinasCarrito.forEach( machine => {
-            contar += machine.precio
-        },)
-        return contar
+    nombre;
+    precio;
+    img;
+    static maquinasCarrito = [];
+  
+    constructor(nombre = '', precio = 0, img = '') {
+      this.nombre = nombre;
+      this.precio = precio;
+      this.img = img;
     }
-
-    static removeMaquinaFromCart(maquina = new Maquina()) {
-        for(let i = 0; i < this.maquinasCarrito.length; i++){
-            if(maquina.name === this.maquinasCarrito[i].name){
-                this.maquinasCarrito.splice(i, 1);
-                return;
-            }
-        }
+  
+    
+    addMaquinaToCart() {
+      Maquina.maquinasCarrito.push(this);
+    }
+  
+   
+    removeMaquinaFromCart() {
+      const index = Maquina.maquinasCarrito.findIndex(machine => machine.nombre === this.nombre);
+      if (index !== -1) {
+        Maquina.maquinasCarrito.splice(index, 1);
       }
-
-    constructor (nombre = '', precio = 0, img = '', ){
-        this.nombre = nombre
-        this.precio = precio
-        this.img = img
     }
-}
+  
+    
+    static calculateTotalPrice() {
+      let total = 0;
+      Maquina.maquinasCarrito.forEach((machine) => {
+        total += machine.precio;
+      });
+      return total;
+    }
+  }
 
