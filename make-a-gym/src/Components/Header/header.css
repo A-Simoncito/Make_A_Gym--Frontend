@@ -1,59 +1,73 @@
+/* Estilos del encabezado */
 header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    background-color: rgb(65, 93, 163);
-    color: white;
-    height: 80px;
-  }
-  
-  .search-container {
-    flex: 0.3; 
-    display: flex;
-    align-items: center;
-  }
-  
-  .search-container input[type="text"],
-  .search-container button {
-    width: 100px; /* Ancho fijo para la barra de búsqueda y el botón */
-    padding: 5px;
-  }
-  
-  .search-container input[type="text"] {
-    margin-right: 5px; /* Separación entre la barra de búsqueda y el botón */
-  }
-  
-  .search-container button {
-    background-color: #555;
-    border: none;
-    border-radius: 0 3px 3px 0;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .TittleP {
-    text-align: center;
-    font-size: 45px;
-  }
-  
-  .TittleP > * {
-    color: black !important;
-  }
-  
-  .login-icon {
-    position: absolute;
-    top: 5px;
-    left: 0px;
-    transform: translate(1, 1);
-  }
-  
-  .login-icon img {
-    width: 85px;
-    height: auto;
-  }
-  
-  .seeCarrito {
-    font-size: 30px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #5e945e;
+  color: white;
+  height: 80px;
+}
+
+/* Estilos del título */
+.TittleP {
+  color: black !important;
+  text-align: center;
+  font-size: 36px;
+  margin: 0;
+  flex: 1; /* Para que ocupe el espacio restante */
+}
+
+/* Estilos del contenedor de búsqueda */
+.search-container {
+  position: relative;
+}
+
+/* Estilos del campo de búsqueda */
+.search-container input[type="text"] {
+  width: 250px;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  transition: width 0.3s ease;
+}
+
+/* Estilos del botón de búsqueda */
+.search-container button {
+  background-color: #555;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilos del botón de búsqueda al pasar el mouse */
+.search-container button:hover {
+  background-color: #333;
+}
+
+/* Estilos del ícono de usuario */
+.login-icon {
+  margin-left: 10px; /* Ajustar el margen izquierdo */
+}
+
+/* Estilos del ícono de usuario */
+.login-icon img {
+  width: 80px;
+  height: auto;
+  cursor: pointer;
+}
+
+/* Estilos del ícono del carrito */
+.seeCarrito {
+  font-size: 55px;
+  cursor: pointer;
+}
+
+/* Estilos del ícono del carrito al pasar el mouse */
+.seeCarrito:hover {
+  transform: scale(1.1);
+}

@@ -17,10 +17,6 @@
     background-attachment: fixed;
 }
 
-
-
-
-
 main{
     width: 100%;
     padding: 20px;
@@ -38,7 +34,7 @@ main{
 
 .footer {
     margin-top: auto;
-  }
+}
 
 .caja__trasera{
     width: 100%;
@@ -47,8 +43,7 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 128, 255, 0.5);
-
+    background-color: rgba(94, 148, 94, 0.7); /* Verde suave */
 }
 
 .caja__trasera div{
@@ -56,7 +51,6 @@ main{
     color: white;
     transition: all 500ms;
 }
-
 
 .caja__trasera div p,
 .caja__trasera button{
@@ -90,7 +84,7 @@ main{
     color: #46A2FD;
 }
 
-/*Formularios*/
+/* Formularios */
 
 .contenedor__login-register{
     display: flex;
@@ -100,15 +94,14 @@ main{
     position: relative;
     top: -185px;
     left: 10px;
-
-    /*La transicion va despues del codigo JS*/
+    /* La transición va después del código JS */
     transition: left 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 .contenedor__login-register form{
     width: 100%;
     padding: 80px 20px;
-    background: white;
+    background: #f5f5dc; /* Marrón claro tirando a beige */
     position: absolute;
     border-radius: 20px;
 }
@@ -117,7 +110,7 @@ main{
     font-size: 30px;
     text-align: center;
     margin-bottom: 20px;
-    color: #46A2FD;
+    color: #4b7e4b; /* Verde claro un poco más oscuro */
 }
 
 .contenedor__login-register form input{
@@ -125,7 +118,7 @@ main{
     margin-top: 20px;
     padding: 10px;
     border: none;
-    background: #F2F2F2;
+    background: #e0e0e0; /* Color más claro para el campo de entrada */
     font-size: 16px;
     outline: none;
 }
@@ -135,28 +128,23 @@ main{
     margin-top: 40px;
     border: none;
     font-size: 14px;
-    background: #46A2FD;
+    background: #4b7e4b; /* Verde claro un poco más oscuro */
     font-weight: 600;
     cursor: pointer;
     color: white;
     outline: none;
 }
 
-
-
-
 .formulario__login{
     opacity: 1;
     display: block;
 }
+
 .formulario__register{
     display: none;
 }
 
-
-
 @media screen and (max-width: 850px){
-
     main{
         margin-top: 50px;
     }
@@ -173,8 +161,7 @@ main{
         position: absolute;
     }
 
-
-    /*Formularios*/
+    /* Formularios */
 
     .contenedor__login-register{
         top: -10px;
