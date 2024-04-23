@@ -1,25 +1,13 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { loadLayersModel } from '@tensorflow/tfjs';
 import './header.css';
 import loginIcon from '../../multimedia/login.jpg';
-import { Link } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
-
-const machinesstock = [
-  { title: 'Press de banca', year: 1994 },
-  { title: 'Press inclinado', year: 1972 },
-  { title: 'Press Declinado', year: 1972 },
-  { title: 'Dorsalera', year: 1972 },
-  { title: 'Hombros', year: 1972 },
-  { title: 'Espalda Poleas', year: 1972 },
-  { title: 'Prensa 45°', year: 1972 },
-  { title: 'Sillon Cuadriceps', year: 1972 },
-  { title: 'Gemelos y Sentadillas', year: 1972 },
-
-  // Otras películas aquí...
-];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -46,7 +34,38 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   justifyContent: 'center',
 }));
 
-export default function Header() {
+const Header = () => {
+  const [searchText, setSearchText] = useState('');
+  const [model, setModel] = useState(null);
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    const loadModel = async () => {
+      try {
+        const loadedModel = await loadLayersModel('/models/autocorrect_model.json'); // Ajustar la ruta según la ubicación real del modelo
+        setModel(loadedModel);
+      } catch (error) {
+        console.error('Error al cargar el modelo:', error);
+      }
+    };
+    loadModel();
+  }, []);
+
+  const handleInputChange = async (event) => {
+    const value = event.target.value;
+    setSearchText(value);
+    if (model && value) {
+      try {
+        const predictions = await model.predict([value]);
+        setOptions(predictions[0].split(','));
+      } catch (error) {
+        console.error('Error al predecir:', error);
+      }
+    } else {
+      setOptions([]);
+    }
+  };
+
   return (
     <header>
       <Search>
@@ -55,15 +74,14 @@ export default function Header() {
         </SearchIconWrapper>
         <Autocomplete
           id="search-autocomplete"
-          options={machinesstock.map((option) => option.title)}
+          options={options}
+          value={searchText}
+          onChange={(event, newValue) => setSearchText(newValue)}
           renderInput={(params) => (
             <TextField
               {...params}
-              inputProps={{
-                ...params.inputProps,
-                'aria-label': 'search',
-                style: { width: '100%' }, // Ajuste del ancho del campo de búsqueda
-              }}
+              placeholder="Search…"
+              onChange={handleInputChange}
             />
           )}
         />
@@ -86,4 +104,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;
