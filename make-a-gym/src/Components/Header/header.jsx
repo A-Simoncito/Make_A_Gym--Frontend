@@ -8,6 +8,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { setup, word_to_int, int_to_word, create_model, loadModelFromFile } from '../../LSTM/lstm.js'; // Importar las funciones necesarias
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -38,26 +39,38 @@ const Header = () => {
   const [searchText, setSearchText] = useState('');
   const [model, setModel] = useState(null);
   const [options, setOptions] = useState([]);
+  const [isModelLoaded, setIsModelLoaded] = useState(false);
 
   useEffect(() => {
-    const loadModel = async () => {
+    const fetchData = async () => {
       try {
-        const loadedModel = await loadLayersModel('/models/autocorrect_model.json'); // Ajustar la ruta según la ubicación real del modelo
+        const loadedModel = await loadLayersModel('http://localhost:3000/autocorrect_model.json');
         setModel(loadedModel);
+        setIsModelLoaded(true);
       } catch (error) {
         console.error('Error al cargar el modelo:', error);
       }
     };
-    loadModel();
+    fetchData();
+    setup(); // Llamar a la función setup dentro del useEffect
   }, []);
 
   const handleInputChange = async (event) => {
+    const tf = await import('@tensorflow/tfjs'); // Importar TensorFlow.js aquí
     const value = event.target.value;
     setSearchText(value);
-    if (model && value) {
+    if (model && value !== undefined && value.length > 0) {
       try {
-        const predictions = await model.predict([value]);
-        setOptions(predictions[0].split(','));
+        // Preprocesamiento del texto
+        const intWords = word_to_int([value], 10);
+        const predFeatures = tf.oneHot(tf.tensor2d(intWords, [intWords.length, 10], 'int32'), 26);
+
+        // Predicción del texto
+        const predictions = await model.predict(predFeatures);
+
+        // Postprocesamiento del texto
+        const decodedWords = int_to_word(predictions.argMax(-1).arraySync()[0], 10);
+        setOptions([decodedWords.join('')]);
       } catch (error) {
         console.error('Error al predecir:', error);
       }
