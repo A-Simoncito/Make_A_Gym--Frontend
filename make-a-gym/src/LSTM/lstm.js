@@ -7,6 +7,25 @@ const tf = require('@tensorflow/tfjs');
 async function setup() {
     model = await create_model(max_len, ALPHA_LEN);
     model = await loadModelFromFile();
+
+    document.getElementById('pred_features')
+      .addEventListener('keyup',()=>{
+        console.log( document.getElementById('pred_features').value);
+        let pattern = new RegExp("^[a-z]{1,"+max_len+"}$");
+        let pred_features = []
+        pred_features.push(document.getElementById('pred_features').value);
+        if(pred_features[0].length<sample_len+1 ||  !pattern.test(pred_features[0])){
+           document.getElementById('pred_labels').value="";
+          return;
+        }
+        pred_features = preprocessing_stage_2(pred_features,max_len);
+        pred_features = preprocessing_stage_5(pred_features,max_len,ALPHA_LEN);
+        let pred_labels = model.predict(pred_features);
+        pred_labels = postprocessing_stage_1(pred_labels)
+        pred_labels = postprocessing_stage_2(pred_labels,max_len)[0]
+        document.getElementById('pred_labels').value=pred_labels.join("");
+
+      })
 }
 
 function preprocessing_stage_2(words, max_len) {
@@ -97,4 +116,4 @@ async function loadModelFromFile() {
     }
 }
 
-export { setup, word_to_int, int_to_word, create_model, loadModelFromFile };
+export { setup };
